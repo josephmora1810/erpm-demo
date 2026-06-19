@@ -2,7 +2,9 @@
 
 namespace App\Enum;
 
-enum DocumentType : string
+use Filament\Support\Contracts\HasLabel;
+
+enum DocumentType : string implements HasLabel
 {
     case Venezuelan = 'V';
     case Foreign = 'E';
@@ -10,7 +12,7 @@ enum DocumentType : string
     case Governmental = "G";
     case Legal = "J";
 
-    public function label() : string
+    public function getLabel() : ?string
     {
         return match($this){
             self::Venezuelan => 'Venezolano',

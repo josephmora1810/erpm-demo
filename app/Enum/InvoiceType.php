@@ -2,12 +2,14 @@
 
 namespace App\Enum;
 
-enum InvoiceType: string
+use Filament\Support\Contracts\HasLabel;
+
+enum InvoiceType: string implements HasLabel
 {
     case Sale = 'sale';
     case Purchase = 'purchase';
 
-    public function label() : string {
+    public function getLabel() : ?string {
         return match($this){
             self::Sale => 'Venta', //(CxC)
             self::Purchase => 'Compra' //(CxP)

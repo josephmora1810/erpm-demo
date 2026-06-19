@@ -12,8 +12,8 @@ class Customer extends Model
     protected $fillable = ['name','document_type','document_number','email','phone'];
 
     protected $casts = [
-            'document_type' => DocumentType::class,
-        ];
+        'document_type' => DocumentType::class,
+    ];
 
     public function invoices(): HasMany
     {

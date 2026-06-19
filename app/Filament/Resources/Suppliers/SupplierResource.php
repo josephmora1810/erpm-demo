@@ -15,10 +15,13 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class SupplierResource extends Resource
 {
     protected static ?string $model = Supplier::class;
+
+    protected static string|UnitEnum|null $navigationGroup = "Facturacion y Cuentas";
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::UserGroup;
 
@@ -52,5 +55,15 @@ class SupplierResource extends Resource
             'view' => ViewSupplier::route('/{record}'),
             'edit' => EditSupplier::route('/{record}/edit'),
         ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'proveedor'; // Nombre en singular
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'proveedores'; // Nombre en plural para el menú
     }
 }

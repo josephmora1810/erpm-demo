@@ -15,10 +15,13 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class WarehouseResource extends Resource
 {
     protected static ?string $model = Warehouse::class;
+
+    protected static string|UnitEnum|null $navigationGroup = "Almacenes e Inventario";
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingStorefront;
 
@@ -52,5 +55,15 @@ class WarehouseResource extends Resource
             'view' => ViewWarehouse::route('/{record}'),
             'edit' => EditWarehouse::route('/{record}/edit'),
         ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'almacen'; // Nombre en singular
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'almacenes'; // Nombre en plural para el menú
     }
 }

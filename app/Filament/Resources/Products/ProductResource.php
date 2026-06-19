@@ -11,14 +11,18 @@ use App\Filament\Resources\Products\Schemas\ProductInfolist;
 use App\Filament\Resources\Products\Tables\ProductsTable;
 use App\Models\Product;
 use BackedEnum;
+use Dom\DocumentType;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
+
+    protected static string|UnitEnum|null $navigationGroup = "Almacenes e Inventario";
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ArchiveBoxArrowDown;
 
@@ -52,5 +56,15 @@ class ProductResource extends Resource
             'view' => ViewProduct::route('/{record}'),
             'edit' => EditProduct::route('/{record}/edit'),
         ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'producto'; // Nombre en singular
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'productos'; // Nombre en plural para el menú
     }
 }

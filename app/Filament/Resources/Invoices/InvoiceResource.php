@@ -15,11 +15,13 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class InvoiceResource extends Resource
 {
     protected static ?string $model = Invoice::class;
 
+    protected static string|UnitEnum|null $navigationGroup = "Facturacion y Cuentas";
     protected static string|BackedEnum|null $navigationIcon = Heroicon::CreditCard;
 
     public static function form(Schema $schema): Schema
@@ -52,5 +54,15 @@ class InvoiceResource extends Resource
             'view' => ViewInvoice::route('/{record}'),
             'edit' => EditInvoice::route('/{record}/edit'),
         ];
+    }
+
+    public static function getModelLabel(): string
+    {
+        return 'factura'; // Nombre en singular
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'facturas'; // Nombre en plural para el menú
     }
 }

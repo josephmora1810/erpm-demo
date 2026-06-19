@@ -2,13 +2,15 @@
 
 namespace App\Enum;
 
-enum Status : string
+use Filament\Support\Contracts\HasLabel;
+
+enum Status : string implements HasLabel
 {
     case Pending = 'pending';
     case Paid = 'paid';
     case Canceled = 'canceled';
 
-    public function label(){
+    public function getLabel() : ?string {
         return match($this){
             self::Pending => 'Pendiente',
             self::Paid => 'Pagado',
