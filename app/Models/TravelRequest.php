@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use App\Enum\TravelStatus;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class TravelRequest extends Model
 {
+    use HasFactory;
     protected $fillable = ['employee_id','destination','purpose','estimated_amount','status'];
     
     protected $casts = [

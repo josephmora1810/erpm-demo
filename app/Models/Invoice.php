@@ -4,11 +4,13 @@ namespace App\Models;
 
 use App\Enum\InvoiceType;
 use App\Enum\Status;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Invoice extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'number',
         'invoice_type',
