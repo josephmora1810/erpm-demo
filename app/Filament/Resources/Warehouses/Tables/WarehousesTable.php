@@ -16,9 +16,9 @@ class WarehousesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()->label('Nombre'),
                 TextColumn::make('location')
-                    ->searchable(),
+                    ->searchable()->label('Locaciòn'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

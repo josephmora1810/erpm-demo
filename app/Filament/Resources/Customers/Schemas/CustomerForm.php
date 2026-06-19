@@ -14,17 +14,17 @@ class CustomerForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
+                    ->required()->label('nombre'),
                 Select::make('document_type')
                     ->options(DocumentType::class)
-                    ->required(),
+                    ->required()->label('tipo de documento'),
                 TextInput::make('document_number')
-                    ->required(),
+                    ->required()->label('documento de identidad'),
                 TextInput::make('email')
                     ->label('Email address')
-                    ->email(),
+                    ->email()->label('correo electronico'),
                 TextInput::make('phone')
-                    ->tel(),
+                    ->tel()->label('telefono'),
             ]);
     }
 }

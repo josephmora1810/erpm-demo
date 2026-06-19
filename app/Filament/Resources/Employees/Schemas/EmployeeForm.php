@@ -14,17 +14,17 @@ class EmployeeForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
+                    ->required()->label('nombre'),
                 Select::make('document_type')
                     ->options(DocumentType::class)
-                    ->required(),
+                    ->required()->label('tipo de documento'),
                 TextInput::make('document_number')
-                    ->required(),
+                    ->required()->label('tipo de documento'),
                 TextInput::make('position')
-                    ->required(),
+                    ->required()->label('puesto de trabajo'),
                 TextInput::make('base_salary')
                     ->required()
-                    ->numeric(),
+                    ->numeric()->label('salario base'),
             ]);
     }
 }

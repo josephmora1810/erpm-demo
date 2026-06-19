@@ -11,14 +11,14 @@ class InvoiceInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('number'),
+                TextEntry::make('number')->label('numero'),
                 TextEntry::make('invoice_type')
-                    ->badge(),
+                    ->badge()->label('nombre'),
                 TextEntry::make('customer.name')
-                    ->label('Customer')
+                    ->label('Cliente')
                     ->placeholder('-'),
                 TextEntry::make('supplier.name')
-                    ->label('Supplier')
+                    ->label('Proveedor')
                     ->placeholder('-'),
                 TextEntry::make('total')
                     ->numeric(),

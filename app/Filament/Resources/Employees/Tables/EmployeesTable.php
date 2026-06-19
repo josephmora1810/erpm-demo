@@ -15,17 +15,17 @@ class EmployeesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()->label('nombre'),
                 TextColumn::make('document_type')
                     ->badge()
-                    ->searchable(),
+                    ->searchable()->label('tipo de documento'),
                 TextColumn::make('document_number')
-                    ->searchable(),
+                    ->searchable()->label('numero de documento'),
                 TextColumn::make('position')
-                    ->searchable(),
+                    ->searchable()->label('puesto de trabajo'),
                 TextColumn::make('base_salary')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()->label('salario base'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

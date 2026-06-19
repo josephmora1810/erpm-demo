@@ -13,19 +13,34 @@ class PayrollForm
         return $schema
             ->components([
                 Select::make('employee_id')
-                    ->relationship('employee','name')->required(),
-                TextInput::make('period')
-                    ->required(),
-                TextInput::make('gross_amount')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('deductions')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                TextInput::make('net_amount')
-                    ->required()
-                    ->numeric(),
+                ->label('Empleado') // Etiqueta clara
+                ->relationship('employee', 'name')
+                ->required(),
+
+            TextInput::make('period')
+                ->label('Período') // Con tilde
+                ->placeholder('Ej: Quincena 1 - Junio 2026')
+                ->required(),
+
+            TextInput::make('gross_amount')
+                ->label('Salario Bruto')
+                ->numeric()
+                ->prefix('$') // Opcional: ayuda visual de moneda
+                ->required(),
+
+            TextInput::make('deductions')
+                ->label('Deducciones')
+                ->numeric()
+                ->default(0)
+                ->prefix('$')
+                ->required(),
+
+            TextInput::make('net_amount')
+                ->label('Salario Neto')
+                ->numeric()
+                ->prefix('$')
+                ->readOnly() // Recomendado: que sea de solo lectura si es calculado
+                ->required(),
             ]);
     }
 }

@@ -12,8 +12,8 @@ class WarehouseForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
-                TextInput::make('location'),
+                    ->required()->label('Nombre'),
+                TextInput::make('location')->label('Locaciòn'),
             ]);
     }
 }

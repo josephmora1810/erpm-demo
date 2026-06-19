@@ -33,10 +33,10 @@
                 Email: admin@empresa.com</p>
             </td>
             <td class="invoice-info" width="50%">
-                <div class="title" style="color: #ef4444;">{{ strtoupper($invoice->invoice_type->label()) }}</div>
+                <div class="title" style="color: #ef4444;">{{ strtoupper($invoice->invoice_type->getLabel()) }}</div>
                 <p><strong>Número:</strong> {{ $invoice->number }}<br>
                 <strong>Fecha:</strong> {{ $invoice->created_at->format('d/m/Y') }}<br>
-                <strong>Estado:</strong> {{ strtoupper($invoice->status->label()) }}</p>
+                <strong>Estado:</strong> {{ strtoupper($invoice->status->getLabel()) }}</p>
             </td>
         </tr>
     </table>

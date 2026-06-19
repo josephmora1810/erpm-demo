@@ -18,14 +18,14 @@ class InvoicesTable
         return $table
             ->columns([
                 TextColumn::make('number')
-                    ->searchable(),
+                    ->searchable()->label('numero'),
                 TextColumn::make('invoice_type')
                     ->badge()
-                    ->searchable(),
+                    ->searchable()->label('tipo de factura'),
                 TextColumn::make('customer.name')
-                    ->searchable(),
+                    ->searchable()->label('cliente'),
                 TextColumn::make('supplier.name')
-                    ->searchable(),
+                    ->searchable()->label('proveedor'),
                 TextColumn::make('total')
                     ->money('USD')
                     ->sortable()

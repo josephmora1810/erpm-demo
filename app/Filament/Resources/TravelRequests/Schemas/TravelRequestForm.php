@@ -14,21 +14,34 @@ class TravelRequestForm
     {
         return $schema
             ->components([
-                TextInput::make('employee_id')
+                Select::make('employee_id')
+                    ->label('Empleado')
+                    ->relationship('employee', 'name')
                     ->required()
-                    ->numeric(),
+                    ->searchable() // Útil si tienes muchos empleados
+                    ->preload(),
+                
                 TextInput::make('destination')
+                    ->label('Destino')
                     ->required(),
+                
                 Textarea::make('purpose')
+                    ->label('Propósito del Viaje')
                     ->required()
                     ->columnSpanFull(),
+                
                 TextInput::make('estimated_amount')
+                    ->label('Monto Estimado')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('$'),
+                
                 Select::make('status')
+                    ->label('Estado de la Solicitud')
                     ->options(TravelStatus::class)
-                    ->default('pending')
-                    ->required(),
+                    ->default(TravelStatus::Pending->value)
+                    ->required()
+                    ->disabled(),
             ]);
     }
 }

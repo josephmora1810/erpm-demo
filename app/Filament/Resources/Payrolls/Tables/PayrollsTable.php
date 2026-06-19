@@ -14,26 +14,39 @@ class PayrollsTable
     {
         return $table
             ->columns([
-                TextColumn::make('employee_id')
-                    ->numeric()
+                TextColumn::make('employee.name')
+                    ->label('Empleado')
+                    ->searchable()
                     ->sortable(),
+
                 TextColumn::make('period')
+                    ->label('Período')
                     ->searchable(),
+
                 TextColumn::make('gross_amount')
-                    ->numeric()
+                    ->label('Salario Bruto')
+                    ->money('USD') // Formato de moneda
                     ->sortable(),
+
                 TextColumn::make('deductions')
-                    ->numeric()
+                    ->label('Deducciones')
+                    ->money('USD')
                     ->sortable(),
+
                 TextColumn::make('net_amount')
-                    ->numeric()
+                    ->label('Salario Neto')
+                    ->money('USD')
                     ->sortable(),
+
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Fecha de Creación')
+                    ->dateTime('d/m/Y H:i') // Formato legible en español
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Última Actualización')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

@@ -12,19 +12,30 @@ class ProductInfolist
         return $schema
             ->components([
                 TextEntry::make('warehouse.name')
-                    ->label('Warehouse'),
-                TextEntry::make('name'),
+                    ->label('Almacén'),
+                
+                TextEntry::make('name')
+                    ->label('Nombre del Producto'),
+                
                 TextEntry::make('sku')
-                    ->label('SKU'),
+                    ->label('Código SKU'),
+                
                 TextEntry::make('price')
-                    ->money(),
+                    ->label('Precio de Venta')
+                    ->money('USD'),
+                
                 TextEntry::make('stock')
+                    ->label('Existencia Actual')
                     ->numeric(),
+                
                 TextEntry::make('created_at')
-                    ->dateTime()
+                    ->label('Fecha de Creación')
+                    ->dateTime('d/m/Y H:i')
                     ->placeholder('-'),
+                
                 TextEntry::make('updated_at')
-                    ->dateTime()
+                    ->label('Última Actualización')
+                    ->dateTime('d/m/Y H:i')
                     ->placeholder('-'),
             ]);
     }

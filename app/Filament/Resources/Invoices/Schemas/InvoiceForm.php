@@ -15,21 +15,21 @@ class InvoiceForm
         return $schema
             ->components([
                 TextInput::make('number')
-                    ->required(),
+                    ->required()->label('numero'),
                 Select::make('invoice_type')
                     ->options(InvoiceType::class)
-                    ->required(),
+                    ->required()->label('tipo de factura'),
                 Select::make('customer_id')
-                    ->relationship('customer', 'name'),
+                    ->relationship('customer', 'name')->label('cliente'),
                 Select::make('supplier_id')
-                    ->relationship('supplier', 'name'),
+                    ->relationship('supplier', 'name')->label('proveedor'),
                 TextInput::make('total')
                     ->required()
                     ->numeric(),
                 Select::make('status')
                     ->options(Status::class)
                     ->default('pending')
-                    ->required(),
+                    ->required()->label('estado'),
             ]);
     }
 }

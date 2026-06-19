@@ -18,34 +18,47 @@ class ProductsTable
         return $table
             ->headerActions([
                 ExportAction::make()
+                    ->label('Exportar Productos') // Etiqueta del botón de exportar
                     ->exporter(ProductExporter::class)
                     ->color('success')
                     ->icon('heroicon-o-document-text')
             ])
             ->columns([
                 TextColumn::make('warehouse.name')
+                    ->label('Almacén')
                     ->searchable(),
+                
                 TextColumn::make('name')
+                    ->label('Nombre del Producto')
                     ->searchable(),
+                
                 TextColumn::make('sku')
-                    ->label('SKU')
+                    ->label('Código SKU')
                     ->searchable(),
+                
                 TextColumn::make('price')
-                    ->money()
+                    ->label('Precio')
+                    ->money('USD')
                     ->sortable(),
+                
                 TextColumn::make('stock')
+                    ->label('Existencia')
                     ->badge()
                     ->color(fn (int $state) : string => match (true){
                         $state <= 0 => 'danger',
                         $state <= 10 => 'warning',
                         default => 'success'
                     }),
+                
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Fecha de Creación')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Última Actualización')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

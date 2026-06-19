@@ -14,23 +14,28 @@ class TravelRequestsTable
     {
         return $table
             ->columns([
-                TextColumn::make('employee_id')
-                    ->numeric()
+                TextColumn::make('employee.name')
+                    ->label('Empleado')
+                    ->searchable()
                     ->sortable(),
+                
                 TextColumn::make('destination')
+                    ->label('Destino')
                     ->searchable(),
+                
                 TextColumn::make('estimated_amount')
-                    ->numeric()
+                    ->label('Monto Estimado')
+                    ->money('USD')
                     ->sortable(),
+                
                 TextColumn::make('status')
+                    ->label('Estado')
                     ->badge()
                     ->searchable(),
+                
                 TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Fecha de Solicitud')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

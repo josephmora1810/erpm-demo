@@ -16,23 +16,35 @@ class SuppliersTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nombre o Razón Social')
                     ->searchable(),
+                
                 TextColumn::make('document_type')
+                    ->label('Tipo de Doc.')
                     ->badge()
                     ->searchable(),
+                
                 TextColumn::make('document_number')
+                    ->label('Número de Documento')
                     ->searchable(),
+                
                 TextColumn::make('email')
-                    ->label('Email address')
+                    ->label('Correo Electrónico')
                     ->searchable(),
+                
                 TextColumn::make('phone')
+                    ->label('Teléfono')
                     ->searchable(),
+                
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Fecha de Creación')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Última Actualización')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

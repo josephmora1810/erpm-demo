@@ -11,9 +11,9 @@ class WarehouseInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('name'),
+                TextEntry::make('name')->name('Nombre'),
                 TextEntry::make('location')
-                    ->placeholder('-'),
+                    ->placeholder('-')->label('Locaciòn'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

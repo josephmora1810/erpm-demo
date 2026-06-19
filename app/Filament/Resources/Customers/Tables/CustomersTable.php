@@ -16,17 +16,17 @@ class CustomersTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()->label('nombre'),
                 TextColumn::make('document_type')
                     ->badge()
-                    ->searchable(),
+                    ->searchable()->label('tipo de documento'),
                 TextColumn::make('document_number')
-                    ->searchable(),
+                    ->searchable()->label('numero de documento'),
                 TextColumn::make('email')
                     ->label('Email address')
-                    ->searchable(),
+                    ->searchable()->label('correo electronico'),
                 TextColumn::make('phone')
-                    ->searchable(),
+                    ->searchable()->label('numero de telefono'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
