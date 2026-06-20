@@ -15,12 +15,12 @@ class ProductsChart extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'Unidades en stock',
-                    'data' => [450, 300, 200, 150], // Cantidades por categoría
+                    'data' => [450, 300, 200, 150],
                     'backgroundColor' => [
-                        '#3b82f6', // Azul
+                        '#aa0000', // Azul principal
                         '#10b981', // Verde
-                        '#f59e0b', // Amarillo
-                        '#ef4444', // Rojo
+                        '#f59e0b', // Amarillo/Naranja
+                        '#8b5cf6', // Violeta
                     ],
                 ],
             ],
@@ -30,6 +30,6 @@ class ProductsChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'pie';
+        return 'doughnut'; // o 'doughnut' si prefieres que tenga un hueco en el centro
     }
 }
