@@ -54,12 +54,38 @@ class InvoicesTable
                     ->icon('heroicon-o-document-arrow-down')
                     ->url(fn ($record) => route('invoice.pdf', $record))
                     ->openUrlInNewTab(), // Crucial para que no lo saque del panel
+                Action::make('retencion_iva')
+                    ->label('Retención IVA')
+                    ->color('warning')
+                    ->icon('heroicon-o-document-text')
+                    ->url(fn ($record) => route('pdf.retencion-iva', $record))
+                    ->openUrlInNewTab(),
+                    //->visible(fn ($record) => $record->supplier_id !== null),
+                Action::make('acta_perceptivo')
+                    ->label('Acta Control Perceptivo')
+                    ->color('success')
+                    ->icon('heroicon-o-clipboard-document-check')
+                    ->url(fn ($record) => route('acta.control.perceptivo', $record))
+                    ->openUrlInNewTab(),
+                Action::make('finiquito')
+                    ->label('Finiquito Contable')
+                    ->color('warning')
+                    ->icon('heroicon-o-check-badge')
+                    ->url(fn ($record) => route('finiquito.contable', $record))
+                    ->openUrlInNewTab(),
+                    // ->visible(fn ($record) => $record->supplier_id !== null),
+                Action::make('orden_pago')
+                    ->label('Orden de Pago')
+                    ->color('success')
+                    ->icon('heroicon-o-credit-card')
+                    ->url(fn ($record) => route('orden.pago.pdf', $record))
+                    ->openUrlInNewTab(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
             ]);
-            
+
     }
 }

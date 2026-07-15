@@ -10,6 +10,7 @@ use Filament\Actions\ExportAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Actions\Action;
 
 class ProductsTable
 {
@@ -27,20 +28,20 @@ class ProductsTable
                 TextColumn::make('warehouse.name')
                     ->label('Almacén')
                     ->searchable(),
-                
+
                 TextColumn::make('name')
                     ->label('Nombre del Producto')
                     ->searchable(),
-                
+
                 TextColumn::make('sku')
                     ->label('Código SKU')
                     ->searchable(),
-                
+
                 TextColumn::make('price')
                     ->label('Precio')
                     ->money('USD')
                     ->sortable(),
-                
+
                 TextColumn::make('stock')
                     ->label('Existencia')
                     ->badge()
@@ -49,13 +50,13 @@ class ProductsTable
                         $state <= 10 => 'warning',
                         default => 'success'
                     }),
-                
+
                 TextColumn::make('created_at')
                     ->label('Fecha de Creación')
                     ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                
+
                 TextColumn::make('updated_at')
                     ->label('Última Actualización')
                     ->dateTime('d/m/Y H:i')
@@ -68,6 +69,12 @@ class ProductsTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                Action::make('requisicion')
+                    ->label('Requisición')
+                    ->color('info')
+                    ->icon('heroicon-o-document-text')
+                    ->url(fn ($record) => route('requisicion.pdf', $record))
+                    ->openUrlInNewTab(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
